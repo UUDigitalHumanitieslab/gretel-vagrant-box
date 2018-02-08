@@ -1,0 +1,15 @@
+1) make the upload destination folder writable
+
+/home/ubuntu/uploads/
+
+
+2) zip archive not installed
+
+install php7.0-zip
+
+
+
+3) socket_connect() unable to conenct: connection refused
+ ---??????
+
+alpino.sh -> add error when not starting
