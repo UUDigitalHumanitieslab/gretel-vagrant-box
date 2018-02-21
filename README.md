@@ -8,13 +8,16 @@ Run `vagrant up`
 To finish the installation and make gretel work do the following:
 * go to `localhost:8080/gretel-upload` in your browser
 * Upload a corpus with a quest account. (For example sarah_test.cha.zip)
-* Reload the vagrant
+* Reload the vagrant box
 * ssh to the virtual machine and start the basexserver (basexserver -S) 
 * go to `localhost:8080/gretel` Gretel works now
 
+Both gretel and gretel_upload are cloned to vagrant_data and you can start working on it.
 
-The gretel upload site should be shown if everything went as intended
 
+### Troubleshooting
+
+Make sure that all users have full access (777) to the content of vagrant data. This is necessary because of a quirk with the shared directories.
 
 ### Explanation
 
