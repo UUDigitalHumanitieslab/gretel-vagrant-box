@@ -10,7 +10,7 @@ defined('ROOT_PATH') or define('ROOT_PATH', __DIR__);
 defined('HOME_PATH') or define('HOME_PATH', buildHomeURL());
 
 // Whether or not to use an API to retrieve uploaded corpora. If empty, the corpora will need to be defined in the code.
-defined('API_URL')   or define('API_URL',   '');
+defined('API_URL')   or define('API_URL',   'http://localhost:8080/gretel-upload/index.php/api');
 
 // === CHANGE PATH TO ALPINO DIRECTORY === //
 $alpinoDirectory = "/opt/Alpino";
@@ -96,6 +96,7 @@ $databaseGroups = array(
     'WRPPH' => array(
       'machine' => 'machinename',
       'port' => 0000,
+
       'sentences' => 5475556
     )
   ),
@@ -118,8 +119,8 @@ $databaseGroups = array(
     'port' => 0000
   ),
   'api' => array(
-    'machine' => 'machinename',
-    'port' => 0000
+    'machine' => 'localhost',
+    'port' => 1984
   ),
 );
 
