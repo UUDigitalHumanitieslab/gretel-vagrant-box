@@ -1,15 +1,3 @@
-1) make the upload destination folder writable
-
-/home/ubuntu/uploads/
-
-
-2) zip archive not installed
-
-install php7.0-zip
-
-
-
-3) socket_connect() unable to conenct: connection refused
- ---??????
-
-alpino.sh -> add error when not starting
+Alpino and BaseX need to be restarted if the Vagrant Box is reloaded.
+Puppet would also need to be rechecked in that case.
+The link to GrETEL-upload from gretel doesn't work yet (it points to /gretel/gretel-upload instead of just /gretel-upload).

@@ -9,8 +9,6 @@ cp /vagrant/vagrant_data/config/config.php /vagrant/vagrant_data/GreTEL-upload/a
 # Clones some other git project that gretel-upload depends on
 git clone --depth 1 git://urd.let.rug.nl/Alpino.git /opt/Alpino
 sudo mv Alpino /opt/Alpino
-sudo git clone https://github.com/JanOdijk/chamd.git /opt/chamd
 sudo apt-get install -y python3
 sudo apt-get install -y python3-pip
-sudo -H pip3 install folia2alpino
 sudo apt-get install -y php-mdb2-driver-mysql

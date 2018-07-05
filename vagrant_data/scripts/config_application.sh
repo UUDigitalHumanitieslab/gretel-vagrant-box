@@ -6,12 +6,8 @@ cp /vagrant/vagrant_data/config/apache2.conf /etc/apache2/apache2.conf
 cp /vagrant/vagrant_data/config/composer.json /vagrant/vagrant_data/GreTEL-upload/application/composer.json
 cp /vagrant/vagrant_data/config/config.php /vagrant/vagrant_data/GreTEL-upload/application/config/config.php
 
-#Download composer and copy to the right place then install the dependencies
-curl -s https://getcomposer.org/installer | php
-mv composer.phar /vagrant/vagrant_data/GreTEL-upload/application/composer.phar
-/vagrant/vagrant_data/GreTEL-upload/application/composer.phar install --working-dir=/vagrant/vagrant_data/GreTEL-upload/application/
+composer install --working-dir=/vagrant/vagrant_data/GreTEL-upload/application/
 cp /vagrant/vagrant_data/config/phpunit.xml /vagrant/vagrant_data/GreTEL-upload/application/phpunit.xml
-
 
 # Create a mysql db
 mysql -u root --password=root -e "CREATE DATABASE gretel_upload;"
@@ -20,7 +16,5 @@ mysql -u root --password=root -e "CREATE DATABASE gretel_upload;"
 php /vagrant/vagrant_data/GreTEL-upload/index.php migrate
 
 basexserver -S
-
-
 
 /vagrant_data/GreTEL-upload/alpino.sh

@@ -3,7 +3,7 @@ include php7
 include git
 include python3
 include basex
-include folia2alpino
+include corpus2alpino
 include alpino
 include chamd
 include gretelupload
@@ -24,7 +24,7 @@ class gretelupload::dep {
   class { 'basex::install': }
   class { 'basex::service': }
 
-  class { 'folia2alpino::install': }
+  class { 'corpus2alpino::install': }
   class { 'alpino::install': }
   class { 'chamd::install': }
 

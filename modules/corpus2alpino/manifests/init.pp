@@ -1,7 +1,7 @@
-# Class: gruntcli
+# Class: corpus2alpino
 # ===========================
 #
-# Full description of class gruntcli here.
+# Full description of class corpus2alpino here.
 #
 # Parameters
 # ----------
@@ -28,7 +28,7 @@
 # --------
 #
 # @example
-#    class { 'gruntcli':
+#    class { 'corpus2alpino':
 #      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #    }
 #
@@ -42,7 +42,7 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class gruntcli {
+class corpus2alpino {
 
 
 }

@@ -1,6 +1,6 @@
 require 'spec_helper'
-describe 'folia2alpino' do
+describe 'corpus2alpino' do
   context 'with default values for all parameters' do
-    it { should contain_class('folia2alpino') }
+    it { should contain_class('corpus2alpino') }
   end
 end

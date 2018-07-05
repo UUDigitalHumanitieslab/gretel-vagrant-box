@@ -1,8 +1,6 @@
 class chamd::install{
-
-  exec {"sudo git clone https://github.com/JanOdijk/chamd.git /opt/chamd":
-      require => Package["git"],
-      path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
+  exec{  "sudo -H pip3 install chamd":
+     path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
+     require => Package['python3-pip'],
   }
-
 }
