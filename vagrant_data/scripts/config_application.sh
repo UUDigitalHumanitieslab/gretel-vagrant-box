@@ -18,3 +18,6 @@ php /vagrant/vagrant_data/GreTEL-upload/index.php migrate
 basexserver -S
 
 /vagrant_data/GreTEL-upload/alpino.sh
+
+sudo a2enmod rewrite
+sudo service apache2 restart
