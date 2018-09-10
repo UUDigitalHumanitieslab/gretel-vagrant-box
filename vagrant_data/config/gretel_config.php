@@ -15,6 +15,10 @@ defined('API_URL')   or define('API_URL',   'http://localhost:8080/gretel-upload
 // === CHANGE PATH TO ALPINO DIRECTORY === //
 $alpinoDirectory = "/opt/Alpino";
 
+// Use alpino in server mode
+$alpinoServerMode = true;
+$alpinoServerAddress = '127.0.0.1';
+$alpinoServerPort = 7001;
 
 // In the recursive Javascript call, how many sentences to flush each time
 $flushLimit = 1;
