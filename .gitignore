@@ -3,3 +3,4 @@
 *.log
 vagrant_data/gretel
 vagrant_data/GreTEL-upload
+.DS_Store
