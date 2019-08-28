@@ -11,11 +11,15 @@ class gretel::install {
 
     class {'nodejs::install':} ->
 
-    exec {"clone":
-        command => "git clone -b develop https://github.com/UUDigitalHumanitieslab/gretel.git /vagrant_data/gretel",
-        require => Package["git"],
-        path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
+    vcsrepo { "/vagrant_data/gretel" :
+    ensure   => latest,
+    owner    => 'www-data',
+    group    => 'www-data',
+    provider => 'git',
+    source   => 'https://github.com/UUDigitalHumanitieslab/gretel.git',
+    revision => 'develop',
     } ->
+
     exec{ "npm install" :
         command => "sudo npm install",
         path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',

@@ -69,6 +69,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     sudo apt-get install -y puppet
+    sudo puppet module install puppetlabs/vcsrepo --modulepath /etc/puppet/modules
     source /vagrant/vagrant_data/scripts/install_mysql.sh
   SHELL
   config.vm.provision "puppet" do |puppet|

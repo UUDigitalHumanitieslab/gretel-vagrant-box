@@ -4,9 +4,12 @@ class gretelupload::install{
         ensure => installed,
     }
   }
-  exec {"git clone -b develop https://github.com/UUDigitalHumanitieslab/GrETEL-upload.git /vagrant/vagrant_data/GreTEL-upload":
-      require => Package["git"],
-      path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
+  vcsrepo { "/vagrant/vagrant_data/GreTEL-upload" :
+    ensure   => latest,
+    owner    => 'www-data',
+    group    => 'www-data',
+    provider => 'git',
+    source   => 'https://github.com/UUDigitalHumanitieslab/GrETEL-upload.git',
+    revision => 'develop',
   }
-
 }

@@ -5,6 +5,10 @@ class corpus2alpino::install {
       path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
       require => Package['python3-pip'],
     } ->
+    exec { "sudo -H pip3 install python-ucto==0.4.7":
+      path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
+      require => Package['python3-pip'],
+    } ->
     exec { "sudo -H pip3 install corpus2alpino":
       path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
       require => Package['python3-pip'],
