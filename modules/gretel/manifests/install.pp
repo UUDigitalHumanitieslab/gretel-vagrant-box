@@ -54,7 +54,7 @@ class gretel::install {
         group => 'vagrant',
         mode  => '0755',
     } ->
-    exec{ "npm install" :
+    exec{ "npm ci" :
         command => "npm install",
         path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
         cwd => '/vagrant_data/gretel',
