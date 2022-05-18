@@ -11,6 +11,12 @@ defined('HOME_PATH') or define('HOME_PATH', buildHomeURL());
 
 // Whether or not to use an API to retrieve uploaded corpora. If empty, the corpora will need to be defined in the code.
 defined('API_URL')   or define('API_URL',   'http://localhost:8080/gretel-upload/index.php/api');
+defined('API_BASEX_INFO') or define ('API_BASEX_INFO', array(
+    'machine'   => 'localhost',
+    'port'      => 1984,
+    'username'  => 'admin',
+    'password'  => 'admin'
+));
 
 // === CHANGE PATH TO ALPINO DIRECTORY === //
 $alpinoDirectory = "/opt/Alpino";

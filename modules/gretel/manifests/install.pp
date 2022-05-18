@@ -1,6 +1,6 @@
 include nodejs
 
-class gretel::install {  
+class gretel::install {
     package{["libxml-twig-perl", "libxml-xpath-perl"]:}
 
     if ! defined(Package['composer']) {
@@ -9,29 +9,66 @@ class gretel::install {
         }
     }
 
+    # install alpino-query from local copy
+    vcsrepo { "/vagrant_data/alpino-query" :
+        ensure   => latest,
+        user     => 'vagrant',
+        owner    => 'vagrant',
+        group    => 'vagrant',
+        provider => 'git',
+        source   => 'https://github.com/UUDigitalHumanitieslab/alpino-query.git',
+        revision => 'develop',
+    } ->
+    exec {"pip3 install -e .":
+      path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
+      cwd => '/vagrant_data/alpino-query',
+      require => Package['python3-pip'],
+      user => 'vagrant'
+    } ->
+    file {'/usr/local/bin/alpino-query':
+      ensure => 'link',
+      target => "/home/vagrant/.local/bin/alpino-query"
+    }
+
     class {'nodejs::install':} ->
 
-    vcsrepo { "/vagrant_data/gretel" :
-    ensure   => latest,
-    owner    => 'www-data',
-    group    => 'www-data',
-    provider => 'git',
-    source   => 'https://github.com/UUDigitalHumanitieslab/gretel.git',
-    revision => 'develop',
+    exec {"git config --global --add safe.directory /vagrant_data/gretel":
+      path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
+      environment => ['HOME=/home/vagrant'],
+      user => 'vagrant',
     } ->
+    vcsrepo { "/vagrant_data/gretel" :
+        ensure   => latest,
+        user     => 'vagrant',
+        owner    => 'vagrant',
+        group    => 'vagrant',
+        provider => 'git',
+        source   => 'https://github.com/UUDigitalHumanitieslab/gretel.git',
+        revision => 'develop',
+    }
 
+    file {
+        '/var/www/.npm':
+        ensure => 'directory',
+        owner => 'vagrant',
+        group => 'vagrant',
+        mode  => '0755',
+    } ->
     exec{ "npm install" :
-        command => "sudo npm install",
+        command => "npm install",
         path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
         cwd => '/vagrant_data/gretel',
         require => Class['nodejs::install'],
-    }
+        user => 'vagrant',
+    } ->
     exec{ "npm build" :
-        command => "sudo npm run build",
+        command => "npm run build",
         path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
         cwd => '/vagrant_data/gretel',
         require => Class['nodejs::install'],
+        user => 'vagrant',
     }
+
     exec{ "cp -f /vagrant_data/config/gretel_config.php /vagrant_data/gretel/config.php":
     path => '/bin/:/sbin/:/usr/bin/:/usr/sbin/',
     require => Class['php7::install']

@@ -5,6 +5,7 @@ cp /vagrant/vagrant_data/config/000-default.conf /etc/apache2/sites-enabled/000-
 cp /vagrant/vagrant_data/config/apache2.conf /etc/apache2/apache2.conf
 cp /vagrant/vagrant_data/config/composer.json /vagrant/vagrant_data/GreTEL-upload/application/composer.json
 cp /vagrant/vagrant_data/config/config.php /vagrant/vagrant_data/GreTEL-upload/application/config/config.php
+cp /vagrant/vagrant_data/GreTEL-upload/application/config/common{_default,}.php
 
 composer install --working-dir=/vagrant/vagrant_data/GreTEL-upload/application/
 cp /vagrant/vagrant_data/config/phpunit.xml /vagrant/vagrant_data/GreTEL-upload/application/phpunit.xml
