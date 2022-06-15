@@ -17,8 +17,11 @@ mysql -u root --password=root -e "CREATE DATABASE gretel_upload;"
 php /vagrant/vagrant_data/GreTEL-upload/index.php migrate
 
 basexserver -S
-
 /vagrant_data/GreTEL-upload/alpino.sh
+
+# easy way to run things on boot:
+echo "@reboot root basexserver -S" >> /etc/cron.d/gretel
+echo "@reboot root /vagrant_data/GreTEL-upload/alpino.sh" >> /etc/cron.d/gretel
 
 sudo a2enmod rewrite
 sudo service apache2 restart
